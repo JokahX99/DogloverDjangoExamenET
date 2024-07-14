@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'Application/css/estilos.css'%}"/> <!--Importar estilos de otro archivo--> 
+    <title>Login</title>
+</head>
+<body background="{%static 'Application/pics/bkgd.png'%}">
+    <header>
+        <!--Header/Cabecera-->
+        <!--Video Contexto: https://www.youtube.com/watch?v=OuoLQiXPitk-->
+
+        <div class ="logo"> 
+            <img src="{%static 'Application/pics/logo.png'%}" alt="error">
+            <h2 class="nombre-empresa">Dog Lover</h2>
+        </div>    
+        </div>    
+        <nav>
+            <ul>
+            <li><a href="{%url 'servicios'%}" class="nav-link"> > Volver</a></li>    
+            </ul>
+            </nav>    
+    </header>
+    <div class = "calc_box">
+        <center>
+            <h2>Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <a href="{% url 'signup' %}">Sign Up</a>
+                <br><br>
+                <button type="submit">Log In</button>
+            </form>   
+        </center>
+    </div>
+</body>
+</html>
+

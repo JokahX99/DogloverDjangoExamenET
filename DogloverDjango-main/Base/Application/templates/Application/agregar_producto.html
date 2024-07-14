@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'Application/css/estilos.css'%}"/> <!--Importar estilos de otro archivo--> 
+    <title>Agregar Producto</title>
+</head>
+<body>
+    <header>
+        <!--Header/Cabecera-->
+        <!--Video Contexto: https://www.youtube.com/watch?v=OuoLQiXPitk-->
+
+        <div class ="logo"> 
+            <img src="{%static 'Application/pics/logo.png'%}" alt="error">
+            <h2 class="nombre-empresa">Dog Lover</h2>
+        </div>    
+        </div>    
+        <nav>
+            <ul>
+            <li><a href="{% url 'lista_productos'%}" class="nav-link"> > Volver</a></li>    
+            </ul>
+            </nav>    
+    </header>
+    <center>
+        <h2>Agregar Nuevo Producto</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Producto</button>
+    </form>
+    </center>
+</body>
+</html>

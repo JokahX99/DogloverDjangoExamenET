@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'Application/css/estilos.css'%}"/> <!--Importar estilos de otro archivo--> 
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script> 
+    <script src="https://kit.fontawesome.com/165547e65c.js" crossorigin="anonymous"></script> <!--Importando Iconos-->
+    <title>Servicios</title>
+</head>
+<body background="{%static 'Application/pics/bkgd.png'%}">
+    <header>
+        <!--Header/Cabecera-->
+        <!--Video Contexto: https://www.youtube.com/watch?v=OuoLQiXPitk-->
+
+        <div class ="logo"> 
+            <img src="{%static 'Application/pics/logo.png'%}" alt="logo de la pagina">
+            <h2 class="nombre-empresa">Dog Lover</h2>
+        </div>    
+        <nav>
+            <ul>
+            <li><a>Servicios</a></li>
+            <li>
+                <a>Productos</a>
+                <ul class="dropdown">
+                <li><a href="{% url 'accesorios' %}" class="nav-link">Accesorios</a></li>
+                <li><a href="{% url 'alimentos' %}" class="nav-link">Alimentos</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'about' %}" class="nav-link">Nosotros</a></li>    
+            <li><a href="{% url 'fichas' %}" class="nav-link">Iniciar Sesion</a></li>
+            <li><a href="{% url 'login' %}" class="nav-link">
+                {% if usuario != None %}
+                    {{usuario}}
+                {% else %}
+                    login
+                {% endif %}
+            </a></li>
+            </ul>
+            </nav>
+    </header>
+    
+    <!--Titulo y Parrafos-->
+        <div class ="ttxtbx">
+            
+    </div>
+    <!--Carrusel de Imagenes-->
+    
+    <!--Footer-->
+    <footer class="footer">
+        <div class="fontainer">
+            <div class="row">
+                <div class="footer-col">
+                    <img src="{%static 'Application/pics/logo.png'%}" alt="error">
+                </div>
+                <div class="footer-col">
+                    <h3>INTEGRANTES</h3>
+                    <p>David Segura</p>
+                    <p>Enzo Toledo</p>
+                    <p>Claudio Galiano</p>  
+                </div>
+                <div class="footer-col">
+                    <h3>SIGUENOS</h3>
+                    <a href="https://www.facebook.com/Pelucaninadoglover" class="fa fa-facebook" target="blank"></a>
+                    <a href="https://www.instagram.com/peluqueriacanina_doglover/" class="fa fa-instagram" target="blank"></a>
+                    <a href="https://twitter.com/" class="fa fa-twitter" target="blank"></a> 
+                </div>
+                <div class="footer-col">
+                    <h3>CONTACTOS</h3>
+                    <p>Whatsapp: +56966644433</p>
+                    <p>Localizacion: Carmen&nbsp;1007, Santiago&nbsp;Centro Chile</p>
+                </div>            
+            </div>
+        </div>
+    </footer>
+<div class="copyright">
+    <small>&copy; 2024 <b>Dog Lover</b> - Todos los Derechos Reservados.</small>
+</body>
+</html>

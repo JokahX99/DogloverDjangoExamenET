@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'Application/css/estilos.css'%}"/> <!--Importar estilos de otro archivo--> 
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script> 
+    <script src="https://kit.fontawesome.com/165547e65c.js" crossorigin="anonymous"></script> <!--Importando Iconos-->
+    <title>Nosotros</title>
+</head>
+<body background="{%static 'Application/pics/bkgd.png'%}">
+    <header>
+        <!--Header/Cabecera-->
+        <!--Video Contexto: https://www.youtube.com/watch?v=OuoLQiXPitk-->
+
+        <div class ="logo"> 
+            <img src="{%static 'Application/pics/logo.png'%}" alt="logo de la pagina">
+            <h2 class="nombre-empresa">Dog Lover</h2>
+        </div>    
+        <nav>
+            <ul>
+            <li><a href="{%url 'servicios'%}" class="nav-link">Servicios</a></li>
+            <li>
+                <a>Productos</a>
+                <ul class="dropdown">
+                <li><a href="{%url 'accesorios'%}" class="nav-link">Accesorios</a></li>
+                <li><a href="{%url 'alimentos'%}" class="nav-link">Alimentos</a></li>
+                </ul>
+            </li>
+            <li><a>Nosotros</a></li>
+            {% if user.is_authenticated %}
+                    <li>
+                        <a>{{ user.username }}</a>
+                        <ul class="dropdown">
+                            {% if user.is_staff %}
+                                <li><a href="{% url 'admin:index' %}" class="nav-link">Panel de Admin</a></li>
+                                <li><a href="{% url 'fichas' %}" class="nav-link">Revisar Fichas</a></li>
+                                <li><a href="{% url 'user_list' %}" class="nav-link">Gestionar Usuarios</a></li>
+                                <li><a href="{%url 'lista_productos'%}" class="nav-link">Gestionar Productos</a></li>
+                            {% else %}
+                                <li><a href="" class="nav-link">Mi Carrito</a></li>
+                                <li><a href="{%url 'perfil_usuario'%}" class="nav-link">Mi Perfil</a></li>
+                            {% endif %}
+                            <li>
+                                <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="nav-link">Cerrar Sesion</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login_view' %}">Login</a></li>
+                {% endif %}
+            </ul>   
+        </nav>
+    </header>
+    
+    <!--Titulo y Parrafos-->
+    <div class ="ttxtbx">
+    <h1>Acerca de Nosotros</h1>
+    
+    <p>Bienvenido a "Dog Lover", nos dedicamos a brindar el mejor servicio para el cuidado y embellecimiento de tu peludo. En nuestra peluquería canina, nos apasiona
+        trabajar con perros de todas las razas y tamaños, ofreciendo un ambiente tranquilo y amigable para que se sientan relajados durante su sesión de belleza.
+    
+    <p>Nuestra visión es convertirnos en un referente en el sector de la peluqueria canina, donde se destaque  nuestro excelente servicio al cliente, nuestra variedad y calidad de los productos, habilidad como equipo para realzar la belleza y bienestar de cada mascota. Queremos un lugar donde las mascotas y sus dueños se sientan como en casa, con amor y cuidado en cada servicio que brindamos.</p>
+
+    <p>Video de nuestro patrocinador:<a href="https://www.youtube.com/watch?v=J4HYF_DFKPU" target="blank">https://www.youtube.com/watch?v=J4HYF_DFKPU</a></p>
+    
+    <!--Reproductor de video Javascript-->
+    <div class="videocaja">
+        <div id="player"></div>
+    </div>
+
+    <p>Estamos comprometidos en cumplir con todas las expectativas y estandares de cuidado para tu canino. Nos esforzamos por crear un ambiente seguro y acogedor para que tanto tu como tu mascota
+        disfruten de la experiencia en nuestra peluquería.</p>
+        
+    <p>Ven a visitarnos! descubre la mejor experiencia de cuidado y aseo para caninos.</p>
+    </div>
+   <!--Footer-->
+   <footer class="footer">
+    <div class="fontainer">
+        <div class="row">
+            <div class="footer-col">
+                <img src="{%static 'Application/pics/logo.png'%}" alt="error">
+            </div>
+            <div class="footer-col">
+                <h3>INTEGRANTES</h3>
+                <p>David Segura</p>
+                <p>Enzo Toledo</p>
+                <p>Claudio Galiano</p>  
+            </div>
+            <div class="footer-col">
+                <h3>SIGUENOS</h3>
+                <a href="https://www.facebook.com/Pelucaninadoglover" class="fa fa-facebook" target="blank"></a>
+                <a href="https://www.instagram.com/peluqueriacanina_doglover/" class="fa fa-instagram" target="blank"></a>
+                <a href="https://twitter.com/" class="fa fa-twitter" target="blank"></a>
+            </div>
+            <div class="footer-col">
+                <h3>CONTACTOS</h3>
+                <p>Whatsapp: +56966644433</p>
+                <p>Localizacion: Carmen&nbsp;1007, Santiago&nbsp;Centro Chile</p>
+            </div>            
+        </div>
+    </div>
+</footer>
+<div class="copyright">
+<small>&copy; 2024 <b>Dog Lover</b> - Todos los Derechos Reservados.</small>
+<script type="text/javascript" src="{%static 'Application/js/functions.js'%}"></script>
+</body>
+</html>

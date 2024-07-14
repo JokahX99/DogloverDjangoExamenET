@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'Application/css/estilos.css'%}"/> <!--Importar estilos de otro archivo--> 
+    <title>User List</title>
+</head>
+<body>
+    <header>
+        <!--Header/Cabecera-->
+        <!--Video Contexto: https://www.youtube.com/watch?v=OuoLQiXPitk-->
+
+        <div class ="logo"> 
+            <img src="{%static 'Application/pics/logo.png'%}" alt="error">
+            <h2 class="nombre-empresa">Dog Lover</h2>
+        </div>    
+        </div>    
+        <nav>
+            <ul>
+            <li><a href="{% url 'servicios'%}" class="nav-link"> > Volver</a></li>    
+            </ul>
+            </nav>    
+    </header>
+    <center> 
+        <h2>List of Users</h2>
+    <a href="{% url 'signup' %}">Create New User</a>  
+    <br><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>
+                    <a href="{% url 'edit_user' user.id %}">Edit</a>
+                    <form method="post" action="{% url 'delete_user' user.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    </center>
+    
+    
+</body>
+</html>

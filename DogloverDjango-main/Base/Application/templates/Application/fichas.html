@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User & Dog Info</title>
+    <link rel="stylesheet" href="{%static 'Application/css/estilos.css'%}"/>
+</head>
+<body background="{%static 'Application/pics/bkgd.png'%}">
+    <div class="api_container">
+        <div id="user-info">
+            <h2>Ficha Información Cliente</h2>
+            <ul>
+                <li><strong>Nombre:</strong> <span id="nombre"></span></li>
+                <li><strong>Correo:</strong> <span id="correo"></span></li>
+                <li><strong>Dirección:</strong> <span id="Direccion"></span></li>
+                <li><strong>Celular:</strong> <span id="celular"></span></li>
+                <li><strong>Teléfono:</strong> <span id="telefono"></span></li>
+                <li><strong>Edad:</strong> <span id="edad"></span></li>
+                <li><strong>Nombre Mascota:</strong> <span id="nombre-mascota"></span></li>
+                <li><strong>Edad Mascota:</strong> <span id="edad-mascota"></span></li>
+            </ul>
+        </div>
+
+        <div id="dog-image-container">
+            <h2>*Mascota*</h2>
+            <img id="dog-image" src="" alt="Dog Image">
+        </div>
+        <!-- actualizar los datos -->
+        <button id="fetch-new-data">Actualizar Datos</button> 
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="{%static 'Application/js/functions.js'%}"></script>
+</body>
+</html>

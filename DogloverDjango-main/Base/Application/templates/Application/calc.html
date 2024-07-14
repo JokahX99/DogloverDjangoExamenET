@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script> 
+    <link rel="stylesheet" href="{%static 'Application/css/estilos.css'%}"/> <!--Importar estilos de otro archivo--> 
+    <script src="https://kit.fontawesome.com/165547e65c.js" crossorigin="anonymous"></script> <!--Importando Iconos-->
+    <title>Calculadora de Alimento</title>
+</head>
+<body background="{%static 'Application/pics/bkgd.png'%}">
+    <header>
+        <!--Header/Cabecera-->
+        <!--Video Contexto: https://www.youtube.com/watch?v=OuoLQiXPitk-->
+
+        <div class ="logo"> 
+            <img src="{%static 'Application/pics/logo.png'%}" alt="error">
+            <h2 class="nombre-empresa">Dog Lover</h2>
+        </div>    
+        </div>    
+        <nav>
+            <ul>
+            <li><a href="{% url 'alimentos'%}" class="nav-link"> > Volver</a></li>    
+            </ul>
+            </nav>    
+        </header>
+        <div class = "calc_box">
+            <h1>Calculadora de Calorias</h1>
+            <label for="peso">Peso de la mascota (kg):</label>
+            <input type="number" id="peso" min="0.1" step="0.1">
+            
+            <label for="nivel-actividad">Nivel de actividad:</label>
+            <select id="nivel-actividad">
+                <option value="1.2">Bajo (1.2x mantenimiento)</option>
+                <option value="1.4">Moderado (1.4x mantenimiento)</option>
+                <option value="1.6">Alto (1.6x mantenimiento)</option>
+            </select> 
+            <div id="resultado">
+
+            </div> 
+            <button id="btn_calc" onclick="calcularCalorias()">Calcular</button>  
+        </div>
+    <div class="copyright">
+        <small>Terminos de uso, Privacidad y Cookies, Ayuda</small>
+    </div>
+    <script type="text/javascript" src="{%static 'Application/js/functions.js'%}"></script>
+</body>
+</html>

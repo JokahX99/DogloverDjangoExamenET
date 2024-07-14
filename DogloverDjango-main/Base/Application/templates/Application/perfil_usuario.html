@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'Application/css/estilos.css'%}"/> <!--Importar estilos de otro archivo--> 
+    <title>Perfil del Usuario</title>
+</head>
+<body background="{%static 'Application/pics/bkgd.png'%}">
+    <header>
+        <!--Header/Cabecera-->
+        <!--Video Contexto: https://www.youtube.com/watch?v=OuoLQiXPitk-->
+
+        <div class ="logo"> 
+            <img src="{%static 'Application/pics/logo.png'%}" alt="error">
+            <h2 class="nombre-empresa">Dog Lover</h2>
+        </div>    
+        </div>    
+        <nav>
+            <ul>
+            <li><a href="{%url 'servicios'%}" class="nav-link"> > Volver</a></li>    
+            </ul>
+            </nav>    
+    </header>
+    <div class = "calc_box">
+        <center>
+            <h2>Bienvenido a tu perfil.</h2>
+            <p>Nombre: {{ nombre }}</p>
+            <p>Apellido: {{ apellido }}</p>
+            <a href="{% url 'editar_perfil' %}">Editar Perfil y Cambiar Contraseña</a>
+            <br><br>
+        </center>
+    </div>
+    <div class="copyright">
+        <small>Terminos de uso, Privacidad y Cookies, Ayuda</small>
+    </div>
+    <script type="text/javascript" src="{%static 'Application/js/functions.js'%}"></script>
+</body>
+</html>

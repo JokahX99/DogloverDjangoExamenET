@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'Application/css/estilos.css'%}"/> <!--Importar estilos de otro archivo--> 
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script> 
+    <script src="https://kit.fontawesome.com/165547e65c.js" crossorigin="anonymous"></script> <!--Importando Iconos-->
+    <title>Servicios</title>
+</head>
+<body background="{%static 'Application/pics/bkgd.png'%}">
+    <header>
+        <!-- Header/Cabecera -->
+        <div class="logo"> 
+            <img src="{% static 'Application/pics/logo.png' %}" alt="logo de la pagina">
+            <h2 class="nombre-empresa">Dog Lover</h2>
+        </div>    
+        <nav>
+            <ul>
+                <li><a href="{% url 'servicios' %}">Servicios</a></li>
+                <li>
+                    <a>Productos</a>
+                    <ul class="dropdown">
+                        <li><a href="{% url 'accesorios' %}" class="nav-link">Accesorios</a></li>
+                        <li><a href="{% url 'alimentos' %}" class="nav-link">Alimentos</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'about' %}" class="nav-link">Nosotros</a></li>
+                {% if user.is_authenticated %}
+                    <li>
+                        <a>{{ user.username }}</a>
+                        <ul class="dropdown">
+                            {% if user.is_staff %}
+                                <li><a href="{% url 'admin:index' %}" class="nav-link">Panel de Admin</a></li>
+                                <li><a href="{% url 'fichas' %}" class="nav-link">Revisar Fichas</a></li>
+                                <li><a href="{% url 'user_list' %}" class="nav-link">Gestionar Usuarios</a></li>
+                                <li><a href="{%url 'lista_productos'%}" class="nav-link">Gestionar Productos</a></li>
+                            {% else %}
+                                <li><a href="" class="nav-link">Mi Carrito</a></li>
+                                <li><a href="{%url 'perfil_usuario'%}" class="nav-link">Mi Perfil</a></li>
+                            {% endif %}
+                            <li>
+                                <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="nav-link">Cerrar Sesion</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login_view' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    
+    <!--Titulo y Parrafos-->
+        <div class ="ttxtbx">
+            <h1>Servicios</h1>
+
+                <p>En Dog Lover, nos enorgullece ofrecer servicios de alta calidad para satisfacer las necesidades individuales de cada mascota y su dueño. Nuestro equipo de profesionales apasionados está aquí para brindar a tu amigo peludo la atención y el cuidado que se merece.</p>  
+                                
+            <div id="slider">
+                <input type="radio" name="slider" id="slide1" checked>
+                <input type="radio" name="slider" id="slide2">
+                <input type="radio" name="slider" id="slide3">
+                <input type="radio" name="slider" id="slide4">
+          
+                
+                <div id="slides">
+                   <div id="overflow">
+                      <div class="inner">
+                         <div class="slide slide_1">
+                            <div class="slide-content">
+                                <!--Imagen 1-->
+                               <img src="{%static 'Application/pics/carrusel1.png'%}" alt=" Servicio Solo Lavado 20,990 CLP">
+                            </div>
+                         </div>
+                         <div class="slide slide_2">
+                            <div class="slide-content">
+                                <!--Imagen 2-->
+                                <img src="{%static 'Application/pics/carrusel2.png'%}" alt="Servicio Completo 29,990 CLP">
+                            </div>
+                         </div>
+                         <div class="slide slide_3">
+                            <div class="slide-content">
+                                <!--Imagen 3-->
+                                <img src="{%static 'Application/pics/carrusel3.png'%}" alt="Servicio Baño Sanitario 30,990 CLP">
+                            </div>
+                         </div>
+                         <div class="slide slide_4">
+                            <div class="slide-content">
+                                <!--Imagen 4-->
+                                <img src="{%static 'Application/pics/carrusel4.png'%}" alt="Servicio Deslanado 17,990 CLP">
+                            </div>  
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div id="controls">
+                   <label for="slide1"></label>
+                   <label for="slide2"></label>
+                   <label for="slide3"></label>
+                   <label for="slide4"></label>
+                </div>
+        
+                <div id="bullets">
+                   <label for="slide1"></label>
+                   <label for="slide2"></label>
+                   <label for="slide3"></label>
+                   <label for="slide4"></label>
+                </div>
+             </div>
+             <!-- Esto funciona por algun motivo -->
+            <div class="smbx2" onclick="window.location.href = '';"> 
+                    <div class ="logo"> 
+                        <img src="{%static 'Application/pics/icon1.png'%}" alt="logo de la pagina">
+                    </div>
+                    <div class ="srvname">     
+                    <h4>Servicio de solo baño</h4>
+                    </div>
+                    <div class = "srvdesc">
+                    <p>Tu peludo necesita un refrescamiento rápido? Nuestro servicio de solo baño es perfecto para eso. Incluye un baño higiénico con shampoo neutro para mantener la limpieza de su pelaje, acompañado de un corte de uñas, un peinado profesional y el vital corte sanitario para mantener la higiene de su zona anal.</p>
+                    </div>
+            </div>
+            <div class="smbx2" onclick="window.location.href = '';">  
+                    <div class ="logo"> 
+                        <img src="{%static 'Application/pics/icon1.png'%}" alt="logo de la pagina">
+                    </div>
+                    <div class ="srvname">     
+                    <h4>Servicio completo</h4>
+                    </div>
+                    <div class = "srvdesc">
+                    <p>¿Buscas un cambio de look para tu peludo amigo? Nuestro servicio completo es la respuesta. Además del baño higiénico, ofrecemos un corte de pelo a elección, ya sea según la raza de tu mascota o según tus preferencias. También realizamos el corte de uñas, drenaje de glándula anal y limpieza de oídos para asegurarnos de que tu peludo se sienta fresco y saludable en todo momento.
+                    </p>
+                    </div>
+            </div>
+            <div class="smbx2" onclick="window.location.href = '';">  
+                    <div class ="logo"> 
+                        <img src="{%static 'Application/pics/icon1.png'%}" alt="logo de la pagina">
+                    </div>
+                    <div class ="srvname">     
+                    <h4>Servicio de baño más deslanado</h4>
+                    </div>
+                    <div class = "srvdesc">
+                    <p>¿Notas que el pelaje de tu mascota está necesitando un poco más de atención? Nuestro servicio de baño más deslanado es la solución ideal. Este servicio incluye un baño higiénico junto con un proceso de deslanado experto para eliminar ese subpelo muerto y dejar a tu amigo peludo con un pelaje más ligero y saludable.</p>
+                    </div>
+            </div>
+            <div class="smbx2" onclick="window.location.href = '';">  
+                    <div class ="logo"> 
+                        <img src="{%static 'Application/pics/icon1.png'%}" alt="logo de la pagina">
+                    </div>
+                    <div class ="srvname">     
+                    <h4>Servicio de baño sanitario</h4>
+                    </div>
+                    <div class = "srvdesc">
+                    <p>Si estás lidiando con problemas de pulgas y garrapatas, nuestro servicio de baño sanitario es la respuesta. Además del baño higiénico, aplicamos un líquido especial para combatir estos parásitos desagradables.</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!--Carrusel de Imagenes-->
+    
+    <!--Footer-->
+    <footer class="footer">
+        <div class="fontainer">
+            <div class="row">
+                <div class="footer-col">
+                    <img src="{%static 'Application/pics/logo.png'%}" alt="error">
+                </div>
+                <div class="footer-col">
+                    <h3>INTEGRANTES</h3>
+                    <p>David Segura</p>
+                    <p>Enzo Toledo</p>
+                    <p>Claudio Galiano</p>  
+                </div>
+                <div class="footer-col">
+                    <h3>SIGUENOS</h3>
+                    <a href="https://www.facebook.com/Pelucaninadoglover" class="fa fa-facebook" target="blank"></a>
+                    <a href="https://www.instagram.com/peluqueriacanina_doglover/" class="fa fa-instagram" target="blank"></a>
+                    <a href="https://twitter.com/" class="fa fa-twitter" target="blank"></a> 
+                </div>
+                <div class="footer-col">
+                    <h3>CONTACTOS</h3>
+                    <p>Whatsapp: +56966644433</p>
+                    <p>Localizacion: Carmen&nbsp;1007, Santiago&nbsp;Centro Chile</p>
+                </div>            
+            </div>
+        </div>
+    </footer>
+<div class="copyright">
+    <small>&copy; 2024 <b>Dog Lover</b> - Todos los Derechos Reservados.</small>
+</body>
+</html>
