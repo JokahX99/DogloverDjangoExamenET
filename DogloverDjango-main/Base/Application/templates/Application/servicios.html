@@ -34,7 +34,6 @@
                             {% if user.is_staff %}
                                 <li><a href="{% url 'admin:index' %}" class="nav-link">Panel de Admin</a></li>
                                 <li><a href="{% url 'fichas' %}" class="nav-link">Revisar Fichas</a></li>
-                                <li><a href="{% url 'user_list' %}" class="nav-link">Gestionar Usuarios</a></li>
                                 <li><a href="{%url 'lista_productos'%}" class="nav-link">Gestionar Productos</a></li>
                             {% else %}
                                 <li><a href="" class="nav-link">Mi Carrito</a></li>
