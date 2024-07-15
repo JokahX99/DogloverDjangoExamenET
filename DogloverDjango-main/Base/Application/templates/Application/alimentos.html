@@ -36,7 +36,6 @@
                             {% if user.is_staff %}
                                 <li><a href="{% url 'admin:index' %}" class="nav-link">Panel de Admin</a></li>
                                 <li><a href="{% url 'fichas' %}" class="nav-link">Revisar Fichas</a></li>
-                                <li><a href="{% url 'user_list' %}" class="nav-link">Gestionar Usuarios</a></li>
                                 <li><a href="{%url 'lista_productos'%}" class="nav-link">Gestionar Productos</a></li>
                             {% else %}
                                 <li><a href="" class="nav-link">Mi Carrito</a></li>
@@ -65,11 +64,12 @@
             <div class="products-container">
                 {% for producto in productos %}
                     <div class="product" data-name="p-{{ forloop.counter }}">
+                        <img src="{{ producto.foto_url }}" alt="No se ha encontrado una imagen.">
                         <h2>{{ producto.nombre }}</h2>
                         <p>{{ producto.descripcion }}</p>
-                        <div class="price">{{ producto.precio }} CLP</div>
+                        <div class="price">$ {{ producto.precio }}</div>
                         <div class="buttons">
-                            <a href="{% url 'alimentos' %}" class="buy">Comprar</a>
+                            <a href="{% url 'alimentos' %}" class="buy">Añadir al carrito</a>
                         </div>
                     </div>
                 {% endfor %}
